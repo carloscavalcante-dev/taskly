@@ -8,6 +8,8 @@
   ],
   "scripts": {
     "dev": "turbo run dev",
+    "dev:web": "turbo run dev --filter=@taskly/web",
+    "dev:api": "turbo run dev --filter=@taskly/api",
     "build": "turbo run build",
     "lint": "turbo run lint"
   },
