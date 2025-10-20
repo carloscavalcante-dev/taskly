@@ -1,0 +1,25 @@
+{
+  "name": "taskly",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.6",
+    "@types/node": "^20",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.8",
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "zod": "^4.1.12"
+  },
+  "packageManager": "pnpm@10.0.0"
+}
