@@ -1,0 +1,59 @@
+name: ci
+
+on:
+  pull_request:
+    branches: ["main", "stage", "develop"]
+    paths:
+      - "apps/api/**"
+      - "apps/web/**"
+      - "packages/**"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mensagem inicial
+        run: echo "🚀 Iniciando teste de build"
+
+      - uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Install pnpm
+        run: corepack enable && corepack prepare pnpm@latest --activate
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build all workspaces
+        run: pnpm build
+
+      - name: Mensagem final
+        run: echo "✅ Build finalizado"
+
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mensagem inicial
+        run: echo "🚀 Iniciando teste de linter"
+
+      - uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Install pnpm
+        run: corepack enable && corepack prepare pnpm@latest --activate
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: runnning biome linter
+        run: pnpm lint
+
+      - name: Mensagem final
+        run: echo "✅ linter finalizado"
