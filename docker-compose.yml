@@ -1,0 +1,16 @@
+services:
+  postgres: 
+    image: postgres:latest
+    container_name: taskly_db
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: taskly
+      POSTGRES_DB: taskly
+      POSTGRES_PASSWORD: 123
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./prisma:/docker-entrypoint-initdb.d:ro
+
+volumes:
+  db-data:
