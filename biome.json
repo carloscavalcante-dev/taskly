@@ -60,7 +60,7 @@
       }
     },
     {
-      "includes": ["apps/web/app/globals.css"],
+      "includes": ["apps/web/src/app/globals.css"],
       "linter": {
         "rules": {
           "suspicious": {
